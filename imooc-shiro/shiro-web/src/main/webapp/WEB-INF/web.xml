@@ -65,25 +65,33 @@
 
     <!-- Servlet Configuration ========================================== -->
 
-    <!--
-      - Servlet that dispatches requests to the Spring managed block servlets
-      -->
     <servlet>
-        <servlet-name>DispatcherServlet</servlet-name>
+        <servlet-name>springServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath*:spring/spring-mvc.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
     </servlet>
-
-    <!-- URL space mappings ============================================= -->
-
-    <!--
-      - Cocoon handles all the URL space assigned to the webapp using its sitemap.
-      - It is recommended to leave it unchanged. Under some circumstances though
-      - (like integration with proprietary webapps or servlets) you might have
-      - to change this parameter.
-      -->
     <servlet-mapping>
-        <servlet-name>DispatcherServlet</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <servlet-name>springServlet</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
+    <session-config>
+        <session-timeout>1</session-timeout>
+    </session-config>
+    <!--<error-page>-->
+        <!--<exception-type>java.lang.Throwable</exception-type>-->
+        <!--<location>/403.html</location>-->
+    <!--</error-page>-->
+    <!--<error-page>-->
+        <!--<error-code>404</error-code>-->
+        <!--<location>/WEB-INF/views/error/500.jsp</location>-->
+    <!--</error-page>-->
+    <!--<error-page>-->
+        <!--<error-code>404</error-code>-->
+        <!--<location>/WEB-INF/views/error/404.jsp</location>-->
+    <!--</error-page>-->
 
 </web-app>
