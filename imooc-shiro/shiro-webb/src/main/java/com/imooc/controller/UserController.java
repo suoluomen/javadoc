@@ -19,11 +19,11 @@ public class UserController {
         Subject subject= SecurityUtils.getSubject();
         UsernamePasswordToken token=new UsernamePasswordToken(user.getUsername(),user.getPassword());
         subject.login(token);
-        return "/index.html";
+        return "登录成功";
     }
-    @RequestMapping(value="/",method = RequestMethod.GET)
+    @RequestMapping(value="/other",method = RequestMethod.GET)
     public String login(){
-        return "index";
+        return "登录成功1";
     }
 
 }

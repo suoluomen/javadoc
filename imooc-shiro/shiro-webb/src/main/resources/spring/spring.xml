@@ -2,16 +2,16 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
+    <!--设置shiro过滤器-->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
         <property name="loginUrl" value="login.html"/>
         <property name="unauthorizedUrl" value="403.html"/>
         <property name="filterChainDefinitions">
             <value>
-                /login.html = anon
+                /login.html = anon<!--无需过滤-->
                 /subLogin = anon
-                /* = authc
+                /* = authc<!--需要验证权限-->
             </value>
         </property>
     </bean>
@@ -21,8 +21,10 @@
     </bean>
     <!--设置realm对象-->
     <bean class="com.imooc.shiro.realm.CustomerRealm" id="realm">
+        <!--设置加密对象-->
         <property name="credentialsMatcher" ref="credentialsMatcher"/>
     </bean>
+    <!--加密使用MD5加密-->
     <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher" id="credentialsMatcher">
         <property name="hashAlgorithmName" value="md5"/>
         <property name="hashIterations" value="1"/>
