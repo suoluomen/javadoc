@@ -3,4 +3,7 @@
 .idea/
 *.iml
 imooc-shiro/shiro-test/target/
-imooc-shiro/shiro-test/*.iml
+/imooc-shiro/shiro-test/shiro-test.iml
+/imooc-shiro/imooc-shiro.iml
+/imooc-shiro/shiro-web/shiro-web.iml
+/imooc-shiro/shiro-test/*.iml
