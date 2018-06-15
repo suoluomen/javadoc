@@ -1,0 +1,6 @@
+
+# Intellij
+.idea/
+*.iml
+imooc-shiro/shiro-test/target/
+imooc-shiro/shiro-test/*.iml
